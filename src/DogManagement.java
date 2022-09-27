@@ -16,7 +16,7 @@ with dog information.
 #### Listed below is a detailed explanation of the requirements needed to complete the dog management system.  
 
 ## Requirement 1 (5 Points) 
-Variables are properly declared and initialized; Use of Scanner Object to read input from console. Make use of constant final variables. 
+Variables are properly declared and initialized; Use o  f Scanner Object to read input from console. Make use of constant final variables. 
 Whenever possible, make sure to declare all variables that will hold data along with declaring final variables that will not change during runtime.
 Proper structure used for allowing the end-user to continously select menu option until a sentinel value is entered.
 
@@ -51,14 +51,43 @@ public class DogManagement {
      * Global Declaration for parallel arrays and Scanner Object
      */
     //DECLARING PARALEL ARRAYS OUTSIDE OF MAIN METHOD TO HOLD DOG DATA use the static keyword
+    
+    static int dogAges[] = new int[12];
+    static String dogNames[] = new String[12];
+    static double dogWeights[] = new double[12];
+    static int dogIDs[] = new int[12];
 
 
     //DECLARING SCANNER OBJECT
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
+        //user should be able to continuously enter a number for the prompt
+        int END = 4;
         
-        
+        welcome();
+        int menuOption = displayPrompt();
+
+        while (menuOption != 4) {
+            switch (menuOption) {
+                case 1:
+                createRecord(menuOption);
+                break;
+                
+                case 2:
+                displayRecord();
+                break;
+                
+                case 3:
+                updateRecord();
+                break;
+                
+                default: 
+                System.out.print("Invalid option. Please enter another menu option: ");
+                menuOption = displayPrompt();
+                break;
+            }
+        } 
 
     }
 
@@ -85,6 +114,37 @@ public class DogManagement {
         return menuOption;
     }
 
+    //Method to allow care attendant to enter record
+    public static void createRecord(int menuOption) {
+        int newDogID;
+        int newDogAge;
+        String newDogName;
+        double newDogWeight;
+        int i = 0;
+
+        while (i < dogAges.length) {
+            System.out.print("Enter dog's age: ");
+            newDogAge = Integer.parseInt(scn.nextLine());
+            System.out.print(newDogAge);
+              
+        }
+
+       
+    }
+
+    //Method to allow attendant to update record
+    public static void updateRecord() {
+
+    } 
+
+    //Method to allow attendant to retrieve dog record 
+    public static void displayRecord() {
+        int dogID;
+        int dogAge;
+        String dogName;
+        double dogWeight;
+
+    }
   
     
 
