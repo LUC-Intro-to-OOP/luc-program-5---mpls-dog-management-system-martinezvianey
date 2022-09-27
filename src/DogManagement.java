@@ -64,31 +64,41 @@ public class DogManagement {
     public static void main(String[] args) throws Exception {
         //user should be able to continuously enter a number for the prompt
         int END = 4;
-        
+        int dogCount = 0; 
+        int menuOption = 0;
+        String dogRecord;
+
         welcome();
-        int menuOption = displayPrompt();
-
-        while (menuOption != 4) {
-            switch (menuOption) {
-                case 1:
-                createRecord(menuOption);
-                break;
-                
-                case 2:
-                displayRecord();
-                break;
-                
-                case 3:
-                updateRecord();
-                break;
-                
-                default: 
-                System.out.print("Invalid option. Please enter another menu option: ");
-                menuOption = displayPrompt();
-                break;
+        //int menuOption = displayPrompt();
+        
+        while (menuOption != END) {
+            //menuOption = displayPrompt();
+            if (menuOption > 0) {
+                switch (menuOption) {
+                    case 1:
+                    createRecord();
+                    //menuOption = displayPrompt();
+                    break;
+                        
+                    case 2:
+                    displayRecord();
+                    //menuOption = displayPrompt();
+                    break;
+                        
+                    case 3:
+                    updateRecord();
+                   // menuOption = displayPrompt();
+                    break;
+                        
+                    default: 
+                    System.out.print("Invalid option. Please enter another menu option: ");
+                    //menuOption = displayPrompt();
+                    break;
+                }
             }
-        } 
-
+            menuOption = displayPrompt();
+            //dogCount++;
+        }
     }
 
     //Welcome method that outputs introductory text explaining program
@@ -115,20 +125,55 @@ public class DogManagement {
     }
 
     //Method to allow care attendant to enter record
-    public static void createRecord(int menuOption) {
-        int newDogID;
-        int newDogAge;
-        String newDogName;
-        double newDogWeight;
-        int i = 0;
+    public static void createRecord() {
+        int newDogID = 0;
+        int newDogAge = 0;
+        String newDogName = null;
+        double newDogWeight = 0;
+        int dogCount = 0;
+        String dogRecord = null;
 
-        while (i < dogAges.length) {
+        if (dogCount < dogAges.length) {
             System.out.print("Enter dog's age: ");
-            newDogAge = Integer.parseInt(scn.nextLine());
-            System.out.print(newDogAge);
-              
-        }
+            newDogAge = scn.nextInt();
+            //CHECK System.out.print(newDogAge);
+            dogAges[dogCount] = newDogAge;
 
+            System.out.print("Enter dog's ID number: ");
+            newDogID = scn.nextInt();
+            dogIDs[dogCount] = newDogID;
+
+            System.out.print("Enter dog's weight: ");
+            newDogWeight = scn.nextDouble();
+            dogWeights[dogCount] = newDogWeight; 
+
+            System.out.print("Enter dog's name: ");
+            newDogName = scn.nextLine();
+            dogNames[dogCount] = newDogName;
+        
+        //dogCount = dogCount + 1;
+        //
+        }
+        dogRecord = ("\nDog ID: " + newDogID + 
+                     "\nDog Name: " + newDogName +
+                     "\nDog Age: " + newDogAge +
+                     "\nDog Weight: " + newDogWeight);
+
+        System.out.println("\nThe following information has been entered: ");
+        System.out.println(dogRecord);
+        //CHECK: make sure it adds to array: 
+            //System.out.println(dogIDs[dogCount]);
+
+        //System.out.println("Dog ID: " + dogIDs[dogCount]);
+        //System.out.println("Dog Name: " + dogNames[dogCount]);
+        //System.out.println("Dog Age: " + dogNames[dogCount]);
+        //System.out.println("Dog Weight: " + dogWeights[dogCount]);
+
+        //return dogRecord;
+        //int menuOption = displayPrompt();
+        //return menuOption;
+        //nextChoice = Integer.parseInt(scn.nextLine());
+        //System.out.print(dogWeights);
        
     }
 
