@@ -70,18 +70,21 @@ public class DogManagement {
 
         welcome();
         //int menuOption = displayPrompt();
-        
+        menuOption = displayPrompt();
+        //displayPrompt();
         while (menuOption != END) {
             //menuOption = displayPrompt();
-            if (menuOption > 0) {
+            if (menuOption > 0 ) {
+                //menuOption = displayPrompt();
                 switch (menuOption) {
                     case 1:
-                    createRecord();
+                    createRecord(dogCount);
+                    dogCount = dogCount+1;
                     //menuOption = displayPrompt();
                     break;
                         
                     case 2:
-                    displayRecord();
+                    displayRecord(dogCount);
                     //menuOption = displayPrompt();
                     break;
                         
@@ -92,13 +95,14 @@ public class DogManagement {
                         
                     default: 
                     System.out.print("Invalid option. Please enter another menu option: ");
-                    //menuOption = displayPrompt();
+                    menuOption = displayPrompt();
                     break;
                 }
             }
             menuOption = displayPrompt();
             //dogCount++;
         }
+       //menuOption = displayPrompt();
     }
 
     //Welcome method that outputs introductory text explaining program
@@ -119,18 +123,17 @@ public class DogManagement {
         
         System.out.print("Enter selection here --> ");
         //INPUT
-        menuOption = Integer.parseInt(scn.nextLine());
+        menuOption = Integer.parseInt(scn.next());
 
         return menuOption;
     }
 
     //Method to allow care attendant to enter record
-    public static void createRecord() {
+    public static void createRecord(int dogCount) {
         int newDogID = 0;
         int newDogAge = 0;
         String newDogName = null;
         double newDogWeight = 0;
-        int dogCount = 0;
         String dogRecord = null;
 
         if (dogCount < dogAges.length) {
@@ -148,10 +151,9 @@ public class DogManagement {
             dogWeights[dogCount] = newDogWeight; 
 
             System.out.print("Enter dog's name: ");
-            newDogName = scn.nextLine();
+            newDogName = scn.next();
             dogNames[dogCount] = newDogName;
         
-        //dogCount = dogCount + 1;
         //
         }
         dogRecord = ("\nDog ID: " + newDogID + 
@@ -183,14 +185,28 @@ public class DogManagement {
     } 
 
     //Method to allow attendant to retrieve dog record 
-    public static void displayRecord() {
-        int dogID;
-        int dogAge;
-        String dogName;
-        double dogWeight;
-
+    public static void displayRecord(int dogCount) {
+        int i;
+        int dogID; 
+        
+        for (i=0; i<dogCount; ++i) {
+            System.out.println("Please enter ID# " + dogIDs[i] + " for " + dogNames[i] + ": "); 
+        }
+        dogID = scn.nextInt();
+        for (i=0; i<dogIDs.length; ++i) {
+            if (dogID == dogIDs[i]) {
+                System.out.println("Dog ID: " + dogIDs[i]);
+                System.out.println("Dog Name: " + dogNames[i]);
+                System.out.println("Dog Age: " + dogAges[i]);
+                System.out.println("Dog Weight: " + dogWeights[i]);
+            }
+            //else {
+        }
+                
     }
-  
-    
-
+        //dogID = scn.nextInt();
 }
+        
+
+  
+
