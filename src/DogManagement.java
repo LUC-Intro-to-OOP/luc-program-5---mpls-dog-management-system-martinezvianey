@@ -89,7 +89,7 @@ public class DogManagement {
                     break;
                         
                     case 3:
-                    updateRecord();
+                    updateRecord(dogCount);
                    // menuOption = displayPrompt();
                     break;
                         
@@ -165,22 +165,30 @@ public class DogManagement {
         System.out.println(dogRecord);
         //CHECK: make sure it adds to array: 
             //System.out.println(dogIDs[dogCount]);
-
-        //System.out.println("Dog ID: " + dogIDs[dogCount]);
-        //System.out.println("Dog Name: " + dogNames[dogCount]);
-        //System.out.println("Dog Age: " + dogNames[dogCount]);
-        //System.out.println("Dog Weight: " + dogWeights[dogCount]);
-
-        //return dogRecord;
-        //int menuOption = displayPrompt();
-        //return menuOption;
-        //nextChoice = Integer.parseInt(scn.nextLine());
-        //System.out.print(dogWeights);
        
     }
 
     //Method to allow attendant to update record
-    public static void updateRecord() {
+    public static void updateRecord(int dogCount) {
+        int i;
+        int dogID;
+        int x = 0;
+        int newEntry=0;
+
+        for (i=0; i<dogCount; ++i) {
+            System.out.println("ID# " + dogIDs[i] + " for " + dogNames[i] + ": "); 
+        }
+        System.out.print("Please select the dog ID to update record: ");
+        dogID = scn.nextInt();
+
+        while ( x < dogIDs.length) {
+            if (dogIDs[x] == dogID) {
+                System.out.print("You selected to update " + dogNames[x]);
+                createRecord(x);
+            }
+            x++;
+        }
+        //return newEntry;
 
     } 
 
@@ -190,8 +198,9 @@ public class DogManagement {
         int dogID; 
         
         for (i=0; i<dogCount; ++i) {
-            System.out.println("Please enter ID# " + dogIDs[i] + " for " + dogNames[i] + ": "); 
+            System.out.println("ID# " + dogIDs[i] + " for " + dogNames[i] + ": "); 
         }
+        System.out.print("Please select a dog ID from above:");
         dogID = scn.nextInt();
         for (i=0; i<dogIDs.length; ++i) {
             if (dogID == dogIDs[i]) {
@@ -200,11 +209,11 @@ public class DogManagement {
                 System.out.println("Dog Age: " + dogAges[i]);
                 System.out.println("Dog Weight: " + dogWeights[i]);
             }
-            //else {
+            
         }
                 
     }
-        //dogID = scn.nextInt();
+       
 }
         
 
