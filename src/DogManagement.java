@@ -85,7 +85,6 @@ public class DogManagement {
                         
                     case 2:
                     displayRecord(dogCount);
-                    //menuOption = displayPrompt();
                     break;
                         
                     case 3:
@@ -173,7 +172,7 @@ public class DogManagement {
         int i;
         int dogID;
         int x = 0;
-        int newEntry=0;
+        boolean dogFound = false;
 
         for (i=0; i<dogCount; ++i) {
             System.out.println("ID# " + dogIDs[i] + " for " + dogNames[i] + ": "); 
@@ -181,15 +180,16 @@ public class DogManagement {
         System.out.print("Please select the dog ID to update record: ");
         dogID = scn.nextInt();
 
-        while ( x < dogIDs.length) {
+        for ( x=0 ; x < dogIDs.length; x++) {
             if (dogIDs[x] == dogID) {
-                System.out.print("You selected to update " + dogNames[x]);
-                createRecord(x);
+                System.out.println("You selected to update " + dogNames[x]);
+                createRecord(x);    
             }
-            x++;
+                
         }
-        //return newEntry;
 
+            
+        
     } 
 
     //Method to allow attendant to retrieve dog record 
@@ -204,7 +204,7 @@ public class DogManagement {
         dogID = scn.nextInt();
         for (i=0; i<dogIDs.length; ++i) {
             if (dogID == dogIDs[i]) {
-                System.out.println("Dog ID: " + dogIDs[i]);
+                System.out.println("\nDog ID: " + dogIDs[i]);
                 System.out.println("Dog Name: " + dogNames[i]);
                 System.out.println("Dog Age: " + dogAges[i]);
                 System.out.println("Dog Weight: " + dogWeights[i]);
