@@ -66,7 +66,6 @@ public class DogManagement {
         int END = 4;
         int dogCount = 0; 
         int menuOption = 0;
-        String dogRecord;
 
         welcome();
         //int menuOption = displayPrompt();
@@ -101,6 +100,7 @@ public class DogManagement {
             menuOption = displayPrompt();
             //dogCount++;
         }
+        System.out.println("PROGRAM ENDING");
        //menuOption = displayPrompt();
     }
 
@@ -172,7 +172,6 @@ public class DogManagement {
         int i;
         int dogID;
         int x = 0;
-        boolean dogFound = false;
 
         for (i=0; i<dogCount; ++i) {
             System.out.println("ID# " + dogIDs[i] + " for " + dogNames[i] + ": "); 
@@ -180,15 +179,16 @@ public class DogManagement {
         System.out.print("Please select the dog ID to update record: ");
         dogID = scn.nextInt();
 
-        for ( x=0 ; x < dogIDs.length; x++) {
+        for (x=0; x<dogIDs.length; x++) {
             if (dogIDs[x] == dogID) {
                 System.out.println("You selected to update " + dogNames[x]);
-                createRecord(x);    
+                createRecord(x);
             }
-                
-        }
-
-            
+            else {
+                System.out.print("Dog ID is not in our system.");
+                break;
+            }
+        }         
         
     } 
 
@@ -202,16 +202,23 @@ public class DogManagement {
         }
         System.out.print("Please select a dog ID from above:");
         dogID = scn.nextInt();
-        for (i=0; i<dogIDs.length; ++i) {
+        
+
+        for (i = 0; i <dogIDs.length; ++i) {
             if (dogID == dogIDs[i]) {
+                    
                 System.out.println("\nDog ID: " + dogIDs[i]);
                 System.out.println("Dog Name: " + dogNames[i]);
                 System.out.println("Dog Age: " + dogAges[i]);
                 System.out.println("Dog Weight: " + dogWeights[i]);
+                break;
             }
-            
+            else {
+                System.out.print("Dog ID is not in our system.");
+                break;
+            }
         }
-                
+               
     }
        
 }
